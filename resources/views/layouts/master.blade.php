@@ -17,9 +17,9 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
-    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
+<body class="sb-nav-fixed">
 
 @include('layouts.inc.admin-navbar')
 <div id="layoutSidenav">
@@ -32,7 +32,7 @@
          @include('layouts.inc.admin-footer')
         </div>
 </div>
-    <script src="{{asset('assets/js/bootstrap.bundle.min.jscss/styles.css')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
 </body>
