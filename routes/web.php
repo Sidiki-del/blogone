@@ -29,6 +29,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function (){
     Route::get('edit_category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
     Route::put('update_category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
     Route::get('delete_category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
-
+    Route::get('posts', [App\Http\Controllers\Admin\PostController::class, 'index']);
+    Route::get('add_post', [App\Http\Controllers\Admin\PostController::class, 'create']);
+    Route::post('add_post', [App\Http\Controllers\Admin\PostController::class, 'store']);
 
 });
