@@ -20,6 +20,17 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    width: 150% !important;
+}
+    </style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -51,7 +62,12 @@ $(document).ready(function() {
 </script>
 
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let table = new DataTable('#myTable');
+        });
+        </script>
 
 </body>
 </html>
