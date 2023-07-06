@@ -88,22 +88,11 @@ class CategoryController extends Controller
         return redirect('admin/category')->with('message', 'Category Updated Succesfully');
     }
 
-    public function destroy($category_id)
+    public function destroy(Request $request)
     {
-        $category = Category::find($category_id);
+        $category = Category::find($request->category_delete_id);
 
         if ($category) {
-
-            // $image_path = public_path('uploads/category/'.$category->image);
-            // if(File::exists($image_path)) {
-            //   File::delete($image_path);
-            // }
-
-//             $image_path = "/images/filename.ext";  // Value is not URL but directory file path
-// if(File::exists($image_path)) {
-//     File::delete($image_path);
-// }
-
             $destination = 'uploads/category/'.$category->image;
             if (File::exists($destination)) {
                 File::delete($destination);
