@@ -40,8 +40,8 @@
 </div>
 
 <div class="mb-3">
-<label for="">Category Name</label>
-<input type="file" name="image" class="form-control" id="">
+<label for="">Image</label>
+<input type="file" name="image" required class="form-control" id="">
 </div>
 
 <h4>SEO Tags</h4>

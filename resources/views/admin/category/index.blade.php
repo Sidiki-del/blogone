@@ -2,6 +2,29 @@
 
 @section('title', 'Category')
 @section('content')
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="{{ url('admin/delete_category') }}" method="POST">
+            @csrf
+        <div class="modal-header">
+
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Category With Its Posts</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" name="category_delete_id" id="category_id">
+          <h5>Are You Sure?</h5>
+        </div>
+        <div class="modal-footer">
+          {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+          <button type="submit" class="btn btn-danger">Yes Delete</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
 
 <div class="container-fluid px-4">
 
@@ -33,7 +56,11 @@
                                     <td><img height="50px" width="50px" src="{{ asset('uploads/category/'. $item -> image) }}" alt="Img"></td>
                                     <td>{{ $item -> status == '1' ? 'Hidden': 'Show' }}</td>
                                     <td><a href="{{ url('admin/edit_category/'.$item ->id) }}" class="btn btn-success">Edit</a></td>
-                                    <td><a href="{{ url('admin/delete_category/'.$item ->id) }}" class="btn btn-danger">Delete</a></td>
+                                    <td>
+                                        {{-- <a href="{{ url('admin/delete_category/'.$item ->id) }}" class="btn btn-danger">Delete</a>
+                                         --}}
+                                         <button type="button" class="btn btn-danger deleteCategoryBtn" value="{{ $item -> id }}">Delete</button>
+                                    </td>
                                 </tr>
                                 @endforeach
 
@@ -44,6 +71,24 @@
     </div>
 
 </div>
+
+    @endsection
+
+    @section('scripts')
+    <script>
+        $(document).ready(function () {
+            // $('.deleteCategoryBtn').click(function (e) {
+                $(document).on('click', '.deleteCategoryBtn', function (e) {
+
+                // });
+                e.preventDefault();
+                var category_id = $(this).val();
+                $('#category_id').val(category_id);
+                $('#deleteModal').modal('show');
+
+            });
+        });
+    </script>
 
     @endsection
 </div>
